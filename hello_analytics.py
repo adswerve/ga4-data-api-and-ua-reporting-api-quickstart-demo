@@ -1,7 +1,6 @@
-#TODO: repo
-#TODO: query segment
 #TODO: ga4
-#TODO: (optional: more complex example?)
+#TODO: (optional: more complex example? BQ? CF?)
+#TODO: optional: colab???
 
 """"Hello Analytics Reporting API V4.
 credit: https://developers.google.com/analytics/devguides/reporting/core/v4/quickstart/service-py"""
@@ -9,7 +8,6 @@ credit: https://developers.google.com/analytics/devguides/reporting/core/v4/quic
 from apiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 import os
-print(os.getcwd())
 file_path = os.path.normpath(
             os.path.join(os.path.dirname(__file__), "sandbox", "adswerve-ts-content-marketing-sa.json"))
 
@@ -32,6 +30,7 @@ def initialize_analyticsreporting():
 
   return analytics
 
+# EXAMPLE 1 STARTS
 # Google's example
 # def get_report(analytics):
 #   """Queries the Analytics Reporting API V4.
@@ -52,8 +51,43 @@ def initialize_analyticsreporting():
 #         }]
 #       }
 #   ).execute()
+# EXAMPLE 1 ENDS
 
+# # EXAMPLE 2 STARTS
 # our example
+# def get_report(analytics):
+#   """Queries the Analytics Reporting API V4.
+#
+#   Args:
+#     analytics: An authorized Analytics Reporting API V4 service object.
+#   Returns:
+#     The Analytics Reporting API V4 response.
+#   """
+#   return analytics.reports().batchGet(
+#       body={
+#         'reportRequests': [
+#         {
+#           'viewId': VIEW_ID,
+#           'dateRanges': [{'startDate': '2022-09-16', 'endDate': '2022-09-22'}],
+#           # 'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
+#           'metrics': [{'expression': 'ga:pageviews'},{'expression': 'ga:uniquePageviews'}],
+#           'dimensions': [{'name': 'ga:pageTitle'}],
+#           "orderBys": [
+#             {
+#               "orderType": "VALUE",
+#               "sortOrder": "DESCENDING",
+#               "fieldName": "ga:pageviews"
+#             }
+#           ]
+#         }]
+#       }
+#   ).execute()
+
+# https://stackoverflow.com/questions/47203801/google-analytics-reporting-api-v4-sort-results
+# EXAMPLE 2 ENDS
+
+# EXAMPLE 3 STARTS
+# query a segment
 def get_report(analytics):
   """Queries the Analytics Reporting API V4.
 
@@ -67,21 +101,22 @@ def get_report(analytics):
         'reportRequests': [
         {
           'viewId': VIEW_ID,
-          'dateRanges': [{'startDate': '2022-09-16', 'endDate': '2022-09-22'}],
+          'dateRanges': [{'startDate': '2022-09-01', 'endDate': '2022-09-30'}],
+          # 'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
           'metrics': [{'expression': 'ga:pageviews'},{'expression': 'ga:uniquePageviews'}],
-          'dimensions': [{'name': 'ga:pageTitle'}],
+          'dimensions': [{'name': 'ga:pageTitle'}, {'name': 'ga:segment'}],
           "orderBys": [
             {
               "orderType": "VALUE",
               "sortOrder": "DESCENDING",
               "fieldName": "ga:pageviews"
             }
-          ]
+          ],
+          "segments": [{"segmentId": "gaid::-13"}]
         }]
       }
   ).execute()
-
-# https://stackoverflow.com/questions/47203801/google-analytics-reporting-api-v4-sort-results
+# EXAMPLE 3 ENDS
 
 def print_response(response):
   """Parses and prints the Analytics Reporting API V4 response.
