@@ -9,7 +9,7 @@ from apiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 import os
 file_path = os.path.normpath(
-            os.path.join(os.path.dirname(__file__), "sandbox", "adswerve-ts-content-marketing-sa.json"))
+            os.path.join(os.path.dirname(__file__), "../sandbox", "adswerve-ts-content-marketing-sa.json"))
 
 SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
 KEY_FILE_LOCATION = file_path
