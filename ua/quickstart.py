@@ -32,63 +32,63 @@ def initialize_analyticsreporting():
 
 # EXAMPLE 1 STARTS
 # Google's example
-# def get_report(analytics):
-#   """Queries the Analytics Reporting API V4.
-#
-#   Args:
-#     analytics: An authorized Analytics Reporting API V4 service object.
-#   Returns:
-#     The Analytics Reporting API V4 response.
-#   """
-#   return analytics.reports().batchGet(
-#       body={
-#         'reportRequests': [
-#         {
-#           'viewId': VIEW_ID,
-#           'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
-#           'metrics': [{'expression': 'ga:sessions'}],
-#           'dimensions': [{'name': 'ga:country'}]
-#         }]
-#       }
-#   ).execute()
+def get_report_example_1_sessions_by_country(analytics):
+  """Queries the Analytics Reporting API V4.
+
+  Args:
+    analytics: An authorized Analytics Reporting API V4 service object.
+  Returns:
+    The Analytics Reporting API V4 response.
+  """
+  return analytics.reports().batchGet(
+      body={
+        'reportRequests': [
+        {
+          'viewId': VIEW_ID,
+          'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
+          'metrics': [{'expression': 'ga:sessions'}],
+          'dimensions': [{'name': 'ga:country'}]
+        }]
+      }
+  ).execute()
 # EXAMPLE 1 ENDS
 
 # # EXAMPLE 2 STARTS
 # our example
-# def get_report(analytics):
-#   """Queries the Analytics Reporting API V4.
-#
-#   Args:
-#     analytics: An authorized Analytics Reporting API V4 service object.
-#   Returns:
-#     The Analytics Reporting API V4 response.
-#   """
-#   return analytics.reports().batchGet(
-#       body={
-#         'reportRequests': [
-#         {
-#           'viewId': VIEW_ID,
-#           'dateRanges': [{'startDate': '2022-09-16', 'endDate': '2022-09-22'}],
-#           # 'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
-#           'metrics': [{'expression': 'ga:pageviews'},{'expression': 'ga:uniquePageviews'}],
-#           'dimensions': [{'name': 'ga:pageTitle'}],
-#           "orderBys": [
-#             {
-#               "orderType": "VALUE",
-#               "sortOrder": "DESCENDING",
-#               "fieldName": "ga:pageviews"
-#             }
-#           ]
-#         }]
-#       }
-#   ).execute()
+def get_report_example_2_metrics_by_page_title(analytics):
+  """Queries the Analytics Reporting API V4.
+
+  Args:
+    analytics: An authorized Analytics Reporting API V4 service object.
+  Returns:
+    The Analytics Reporting API V4 response.
+  """
+  return analytics.reports().batchGet(
+      body={
+        'reportRequests': [
+        {
+          'viewId': VIEW_ID,
+          'dateRanges': [{'startDate': '2022-09-16', 'endDate': '2022-09-22'}],
+          # 'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
+          'metrics': [{'expression': 'ga:pageviews'},{'expression': 'ga:uniquePageviews'}],
+          'dimensions': [{'name': 'ga:pageTitle'}],
+          "orderBys": [
+            {
+              "orderType": "VALUE",
+              "sortOrder": "DESCENDING",
+              "fieldName": "ga:pageviews"
+            }
+          ]
+        }]
+      }
+  ).execute()
 
 # https://stackoverflow.com/questions/47203801/google-analytics-reporting-api-v4-sort-results
 # EXAMPLE 2 ENDS
 
 # EXAMPLE 3 STARTS
 # query a segment
-def get_report(analytics):
+def get_report_example_3_ga_segment(analytics):
   """Queries the Analytics Reporting API V4.
 
   Args:
@@ -143,7 +143,9 @@ def print_response(response):
       print("\n")
 def main():
   analytics = initialize_analyticsreporting()
-  response = get_report(analytics)
+  # response = get_report_example_1_sessions_by_country(analytics)
+  # response = get_report_example_2_metrics_by_page_title(analytics)
+  response = get_report_example_3_ga_segment(analytics)
   print_response(response)
 
 if __name__ == '__main__':

@@ -13,7 +13,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]  = KEY_FILE_LOCATION
 #  TODO(developer): replace with your Google Analytics 4 property ID before running the sample.
 PROPERTY_ID = "206551716"
 
-def sample_run_report_example_1_google_quickstart(property_id="YOUR-GA4-PROPERTY-ID"):
+def sample_run_report_example_1_users_by_city(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property.
     Source: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
     """
@@ -35,8 +35,7 @@ def sample_run_report_example_1_google_quickstart(property_id="YOUR-GA4-PROPERTY
         print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-
-def sample_run_report_example_2_adswerve(property_id="YOUR-GA4-PROPERTY-ID"):
+def sample_run_report_example_2_users_by_title(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
 
     # Using a default constructor instructs the client to use the credentials
@@ -60,6 +59,6 @@ def sample_run_report_example_2_adswerve(property_id="YOUR-GA4-PROPERTY-ID"):
 
 if __name__ == "__main__":
 
-    # sample_run_report_example_1_google_quickstart(property_id=PROPERTY_ID)
+    # sample_run_report_example_1_users_by_city(property_id=PROPERTY_ID)
 
-    sample_run_report_example_2_adswerve(property_id=PROPERTY_ID)
+    sample_run_report_example_2_users_by_title(property_id=PROPERTY_ID)
