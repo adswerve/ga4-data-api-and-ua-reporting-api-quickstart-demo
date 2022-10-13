@@ -13,7 +13,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]  = KEY_FILE_LOCATION
 #  TODO(developer): replace with your Google Analytics 4 property ID before running the sample.
 PROPERTY_ID = "206551716"
 
-def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID"):
+def sample_run_report_example_1_google_quickstart(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
 
     # Using a default constructor instructs the client to use the credentials
@@ -33,4 +33,29 @@ def sample_run_report(property_id="YOUR-GA4-PROPERTY-ID"):
         print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-sample_run_report(property_id=PROPERTY_ID)
+
+def sample_run_report_example_2_adswerve(property_id="YOUR-GA4-PROPERTY-ID"):
+    """Runs a simple report on a Google Analytics 4 property."""
+
+    # Using a default constructor instructs the client to use the credentials
+    # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
+    client = BetaAnalyticsDataClient()
+
+    request = RunReportRequest(
+        property=f"properties/{property_id}",
+        dimensions=[Dimension(name="pageTitle")],
+        metrics=[Metric(name="screenPageViews"),Metric(name="activeUsers")],
+        date_ranges=[DateRange(start_date="2022-09-16", end_date="2022-09-22")],
+    )
+    response = client.run_report(request)
+
+    print("Report result:")
+    for row in response.rows:
+        print(row.dimension_values[0].value)
+
+        for i in range(0, len(row.metric_values)):
+            print(row.metric_values[i].value)
+
+# sample_run_report_example_1_google_quickstart(property_id=PROPERTY_ID)
+
+sample_run_report_example_2_adswerve(property_id=PROPERTY_ID)
