@@ -2,8 +2,7 @@
 #TODO: (optional: more complex example? BQ? CF?)
 #TODO: optional: colab???
 
-""""Hello Analytics Reporting API V4.
-credit: https://developers.google.com/analytics/devguides/reporting/core/v4/quickstart/service-py"""
+""""Hello Analytics Reporting API V4."""
 
 from apiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
@@ -18,6 +17,7 @@ VIEW_ID = '146223021'
 
 def initialize_analyticsreporting():
   """Initializes an Analytics Reporting API V4 service object.
+  Source: https://developers.google.com/analytics/devguides/reporting/core/v4/quickstart/service-py
 
   Returns:
     An authorized Analytics Reporting API V4 service object.

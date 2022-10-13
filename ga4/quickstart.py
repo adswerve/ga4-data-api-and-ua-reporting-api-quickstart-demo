@@ -14,7 +14,9 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"]  = KEY_FILE_LOCATION
 PROPERTY_ID = "206551716"
 
 def sample_run_report_example_1_google_quickstart(property_id="YOUR-GA4-PROPERTY-ID"):
-    """Runs a simple report on a Google Analytics 4 property."""
+    """Runs a simple report on a Google Analytics 4 property.
+    Source: https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
+    """
 
     # Using a default constructor instructs the client to use the credentials
     # specified in GOOGLE_APPLICATION_CREDENTIALS environment variable.
@@ -56,6 +58,8 @@ def sample_run_report_example_2_adswerve(property_id="YOUR-GA4-PROPERTY-ID"):
         for i in range(0, len(row.metric_values)):
             print(row.metric_values[i].value)
 
-# sample_run_report_example_1_google_quickstart(property_id=PROPERTY_ID)
+if __name__ == "__main__":
 
-sample_run_report_example_2_adswerve(property_id=PROPERTY_ID)
+    # sample_run_report_example_1_google_quickstart(property_id=PROPERTY_ID)
+
+    sample_run_report_example_2_adswerve(property_id=PROPERTY_ID)
