@@ -22,10 +22,9 @@ for more information.
 """
 
 import os
-file_path = os.path.normpath(
+KEY_FILE_LOCATION = os.path.normpath(
             os.path.join(os.path.dirname(__file__), "../sandbox", "adswerve-ts-content-marketing-sa.json"))
 
-KEY_FILE_LOCATION = file_path
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]  = KEY_FILE_LOCATION
 #  TODO(developer): replace with your Google Analytics 4 property ID before running the sample.
 PROPERTY_ID = "206551716"
