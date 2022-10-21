@@ -1,4 +1,3 @@
-#TODO: ga4
 #TODO: (optional: more complex example? BQ? CF?)
 #TODO: optional: colab???
 
