@@ -144,8 +144,8 @@ def print_response(response):
 def main():
   analytics = initialize_analyticsreporting()
   # response = get_report_example_1_sessions_by_country(analytics)
-  # response = get_report_example_2_metrics_by_page_title(analytics)
-  response = get_report_example_3_ga_segment(analytics)
+  response = get_report_example_2_metrics_by_page_title(analytics)
+  # response = get_report_example_3_ga_segment(analytics)
   print_response(response)
 
 if __name__ == '__main__':
