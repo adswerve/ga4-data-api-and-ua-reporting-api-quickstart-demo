@@ -35,7 +35,7 @@ def sample_run_report_example_1_users_by_city(property_id="YOUR-GA4-PROPERTY-ID"
         print(row.dimension_values[0].value, row.metric_values[0].value)
 
 
-def sample_run_report_example_2_users_by_title(property_id="YOUR-GA4-PROPERTY-ID"):
+def sample_run_report_example_2_metrics_by_page(property_id="YOUR-GA4-PROPERTY-ID"):
     """Runs a simple report on a Google Analytics 4 property."""
 
     # Using a default constructor instructs the client to use the credentials
@@ -61,4 +61,4 @@ if __name__ == "__main__":
 
     # sample_run_report_example_1_users_by_city(property_id=PROPERTY_ID)
 
-    sample_run_report_example_2_users_by_title(property_id=PROPERTY_ID)
+    sample_run_report_example_2_metrics_by_page(property_id=PROPERTY_ID)
