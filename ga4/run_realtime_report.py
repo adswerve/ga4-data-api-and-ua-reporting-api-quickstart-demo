@@ -28,17 +28,22 @@ from google.analytics.data_v1beta.types import RunRealtimeReportRequest
 
 from run_report import print_run_report_response
 
+import os
 
-def run_sample(property_id = "YOUR-GA4-PROPERTY-ID"):
+KEY_FILE_LOCATION = os.path.normpath(
+            os.path.join(os.path.dirname(__file__), "../sandbox", "adswerve-ts-content-marketing-sa.json"))
+PROPERTY_ID = "206551716"
+
+def run_sample(property_id = "YOUR-GA4-PROPERTY-ID", credentials_json_path=""):
     """Runs the sample."""
     # TODO(developer): Replace this variable with your Google Analytics 4
     #  property ID before running the sample.
-    run_realtime_report(property_id)
+    run_realtime_report(property_id, credentials_json_path)
 
 
-def run_realtime_report(property_id="YOUR-GA4-PROPERTY-ID"):
+def run_realtime_report(property_id="YOUR-GA4-PROPERTY-ID", credentials_json_path=""):
     """Runs a realtime report on a Google Analytics 4 property."""
-    client = BetaAnalyticsDataClient()
+    client = BetaAnalyticsDataClient().from_service_account_json(credentials_json_path)
 
     request = RunRealtimeReportRequest(
         property=f"properties/{property_id}",
@@ -53,4 +58,4 @@ def run_realtime_report(property_id="YOUR-GA4-PROPERTY-ID"):
 
 
 if __name__ == "__main__":
-    run_sample(property_id = )
+    run_sample(property_id = PROPERTY_ID, credentials_json_path=KEY_FILE_LOCATION)
