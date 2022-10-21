@@ -6,6 +6,7 @@ https://developers.google.com/analytics/devguides/reporting/core/v4/quickstart/s
 https://medium.com/analytics-for-humans/submitting-your-first-google-analytics-reporting-api-request-cdda19969940
 """
 
+#TODO: convert "date_range_{index}" to an actual date range
 
 from google.analytics.data_v1beta import BetaAnalyticsDataClient
 from google.analytics.data_v1beta.types import DateRange
@@ -32,16 +33,9 @@ def sample_run_report_example_metrics_by_page(property_id="YOUR-GA4-PROPERTY-ID"
         property=f"properties/{property_id}",
         dimensions=[Dimension(name="pageTitle")],
         metrics=[Metric(name="screenPageViews"),Metric(name="activeUsers")],
-        date_ranges=[DateRange(start_date="2022-09-16", end_date="2022-09-22")],
+        date_ranges=[DateRange(start_date="2022-09-16", end_date="2022-09-22"), DateRange(start_date="2022-09-23", end_date="2022-09-29")],
     )
     response = client.run_report(request)
-
-    print("Report result:")
-    for row in response.rows:
-        print(row.dimension_values[0].value)
-
-        for i in range(0, len(row.metric_values)):
-            print(row.metric_values[i].value)
 
     return response
 def parse_response(response):
@@ -51,12 +45,9 @@ def parse_response(response):
     https://medium.com/analytics-for-humans/submitting-your-first-google-analytics-reporting-api-request-cdda19969940
     
     """
-    # Initialize results, in list format because two dataframes might return
-    result_list = []
 
     # Initialize empty data container for the two date ranges (if there are two that is)
     data_csv = []
-    data_csv2 = []
 
     # Initialize header rows
     header_row = []
@@ -83,35 +74,17 @@ def parse_response(response):
 
         data_csv.append(row_temp)
 
-        #TODO: test and develop on 2 data ranges
-        # In case of a second date range, do the same thing for the second request
-        # if len(metrics) == 2:
-        #     row_temp2 = []
-        #     for d in dimensions:
-        #         row_temp2.append(d)
-        #     for m in metrics[1]['values']:
-        #         row_temp2.append(m)
-        #     data_csv2.append(row_temp2)
-
-    # Putting those list formats into pandas dataframe, and append them into the final result
     result_df = pd.DataFrame(data_csv, columns=header_row)
 
-    result_list.append(result_df)
-
-    # if data_csv2 != []:
-    #     result_list.append(pd.DataFrame(data_csv2, columns=header_row))
-    #     result_list[1] = result_df.columns.str.replace(':', '')
-
-    return result_list
+    return result_df
 
 
 def main():
 
   response = sample_run_report_example_metrics_by_page(property_id=PROPERTY_ID)
 
-  df_list = parse_response(response)
-  df = df_list[0]
-  print(df.head(100))
+  df = parse_response(response)
+  print(df.head(100).to_string())
 
 if __name__ == '__main__':
   main()

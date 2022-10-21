@@ -44,12 +44,9 @@ def parse_response(response):
     https://medium.com/analytics-for-humans/submitting-your-first-google-analytics-reporting-api-request-cdda19969940
     
     """
-    # Initialize results, in list format because two dataframes might return
-    result_list = []
 
     # Initialize empty data container for the two date ranges (if there are two that is)
     data_csv = []
-    data_csv2 = []
 
     # Initialize header rows
     header_row = []
@@ -76,7 +73,7 @@ def parse_response(response):
 
         data_csv.append(row_temp)
 
-    # Putting those list formats into pandas dataframe, and append them into the final result
+    # Putting those list formats into pandas dataframe
     result_df = pd.DataFrame(data_csv, columns=header_row)
 
     return result_df
