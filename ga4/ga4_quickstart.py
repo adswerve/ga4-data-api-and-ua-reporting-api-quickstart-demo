@@ -26,7 +26,7 @@ def sample_run_report_example_1_users_by_city(property_id="YOUR-GA4-PROPERTY-ID"
         property=f"properties/{property_id}",
         dimensions=[Dimension(name="city")],
         metrics=[Metric(name="activeUsers")],
-        date_ranges=[DateRange(start_date="2022-10-01", end_date="today")],
+        date_ranges=[DateRange(start_date="2022-10-01", end_date="today")]
     )
     response = client.run_report(request)
 
@@ -46,16 +46,18 @@ def sample_run_report_example_2_metrics_by_page(property_id="YOUR-GA4-PROPERTY-I
         property=f"properties/{property_id}",
         dimensions=[Dimension(name="pageTitle")],
         metrics=[Metric(name="screenPageViews"),Metric(name="activeUsers")],
-        date_ranges=[DateRange(start_date="2022-09-16", end_date="2022-09-22")],
+        # date_ranges=[DateRange(start_date="2023-01-05", end_date="2023-01-11")],
+        date_ranges=[DateRange(start_date="7daysAgo", end_date="yesterday")],
     )
     response = client.run_report(request)
 
     print("Report result:")
     for row in response.rows:
-        print(row.dimension_values[0].value)
+        print("\n", row.dimension_values[0].value)
 
         for i in range(0, len(row.metric_values)):
             print(row.metric_values[i].value)
+
 
 if __name__ == "__main__":
 

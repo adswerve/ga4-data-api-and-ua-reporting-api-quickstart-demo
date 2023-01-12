@@ -6,6 +6,7 @@
 from apiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 import os
+
 file_path = os.path.normpath(
             os.path.join(os.path.dirname(__file__), "../sandbox", "adswerve-ts-content-marketing-sa.json"))
 
@@ -67,8 +68,8 @@ def get_report_example_2_metrics_by_page_title(analytics):
         'reportRequests': [
         {
           'viewId': VIEW_ID,
-          'dateRanges': [{'startDate': '2022-09-16', 'endDate': '2022-09-22'}],
-          # 'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
+          # 'dateRanges': [{'startDate': '2022-09-16', 'endDate': '2022-09-22'}],
+          'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'yesterday'}],
           'metrics': [{'expression': 'ga:pageviews'},{'expression': 'ga:uniquePageviews'}],
           'dimensions': [{'name': 'ga:pageTitle'}],
           "orderBys": [
@@ -100,8 +101,8 @@ def get_report_example_3_ga_segment(analytics):
         'reportRequests': [
         {
           'viewId': VIEW_ID,
-          'dateRanges': [{'startDate': '2022-09-01', 'endDate': '2022-09-30'}],
-          # 'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
+          # 'dateRanges': [{'startDate': '2022-09-01', 'endDate': '2022-09-30'}],
+          'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
           'metrics': [{'expression': 'ga:pageviews'},{'expression': 'ga:uniquePageviews'}],
           'dimensions': [{'name': 'ga:pageTitle'}, {'name': 'ga:segment'}],
           "orderBys": [
