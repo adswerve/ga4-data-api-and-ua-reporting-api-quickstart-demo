@@ -1,7 +1,7 @@
 # Gooogle Analytics Reporting API v4 (UA) and Google Analytics Data API (GA4) Demos
 
 ## Purpose
-This repo has examples of getting started with Reporting API for Universal Analytics and Data API for GA4.
+This repo has examples of getting started with Data API for GA4 and Reporting API for Universal Analytics.
 
 ## Credits
 
@@ -37,7 +37,8 @@ Make sure you put a JSON service account credential file in the ./sandbox subdir
 The service account should have Viewer access to your UA view and GA4 property. 
 
 ### Requirements
-
+```
 pip install -r ua/requirements.txt
 
 pip install -r ga4/requirements.txt
+```
