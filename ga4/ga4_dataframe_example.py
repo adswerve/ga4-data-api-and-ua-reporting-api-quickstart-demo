@@ -32,7 +32,7 @@ def sample_run_report_example_metrics_by_page(property_id="YOUR-GA4-PROPERTY-ID"
         property=f"properties/{property_id}",
         dimensions=[Dimension(name="pageTitle")],
         metrics=[Metric(name="screenPageViews"),Metric(name="activeUsers")],
-        date_ranges=[DateRange(start_date="2022-09-16", end_date="2022-09-22")],
+        date_ranges=[DateRange(start_date="7daysAgo", end_date="yesterday")],
     )
     response = client.run_report(request)
 
