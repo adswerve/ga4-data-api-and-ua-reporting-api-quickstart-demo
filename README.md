@@ -32,7 +32,7 @@ GA4:
 https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart-client-libraries
 
 ### Credential file
-Make sure you put a JSON service account credential file in the ./sandbox subdirectory. Refereance that file in your code.
+Make sure you put a JSON service account credential file in the ./sandbox subdirectory. Reference that file in your code.
 
 The service account should have Viewer access to your UA view and GA4 property. 
 
