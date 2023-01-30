@@ -50,8 +50,8 @@ def get_report_example_2_metrics_by_page_title(analytics):
         'reportRequests': [
         {
           'viewId': VIEW_ID,
-          'dateRanges': [{'startDate': '2022-09-16', 'endDate': '2022-09-22'}],
-          # 'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
+          # 'dateRanges': [{'startDate': '2022-09-16', 'endDate': '2022-09-22'}],
+          'dateRanges': [{'startDate': '7daysAgo', 'endDate': 'today'}],
           'metrics': [{'expression': 'ga:pageviews'},{'expression': 'ga:uniquePageviews'}],
           'dimensions': [{'name': 'ga:pageTitle'}],
           "orderBys": [
