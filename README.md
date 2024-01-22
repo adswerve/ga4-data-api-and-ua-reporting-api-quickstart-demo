@@ -1,4 +1,4 @@
-# Gooogle Analytics Reporting API v4 (UA) and Google Analytics Data API (GA4) Demos
+# Google Analytics Reporting API v4 (UA) and Google Analytics Data API (GA4) Demos
 
 ## Purpose
 This repo has examples of getting started with Data API for GA4 and Reporting API for Universal Analytics.
